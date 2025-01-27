@@ -2,6 +2,8 @@
 
 Theme switcher works by swapping folders, so it works on almost anything. This tool allows you to easily switch between different themes for your applications.
 
+Visit [nightly.link](https://nightly.link/hayattgd/Theme-switcher/workflows/c-cpp/main/Linux) for latest build.
+
 ## Get started
 
 ### Installation
