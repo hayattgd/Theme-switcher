@@ -107,12 +107,13 @@ void applytheme(char* name)
 	char* configpath = concat_str(getenv("HOME"), "/.config/");
 
 
-	printf("~/.config is going to be replaced with ~/.config/themesw/themes/%s\n", name);
+	if(d)printf("~/.config is going to be replaced with ~/.config/themesw/themes/%s\n", name);
+
 	if (!(y || each))
 	{
 		if (confirm())
 		{
-			printf("Operation cancelled.\n");
+			printf(ALT_RED"Operation cancelled.\n"RESET);
 			closedir(dir);
 			exit(0);
 		}
@@ -164,7 +165,7 @@ void applytheme(char* name)
 		free(dest);
 		if(d)printf("done\n");
 	}
-	printf("Running run.sh...\n");
+	if(d)printf("Running run.sh...\n");
 
 	if (each)
 	{
@@ -188,12 +189,13 @@ void applytheme(char* name)
 		exit(1);
 	}
 
-	printf("Shell script executed successfully\n");
-	exit(0);
+	printf(ALT_GREEN"[Theme switched successfully!]"RESET);
+	printf("\n");
 }
 
 int main(int argc, char** argv)
 {
+	printf("\n");
 	m_argc = argc;
 	srand(time(NULL));
 	fullpath = concat_str(getenv("HOME"), BASEPATH);

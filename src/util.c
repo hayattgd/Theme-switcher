@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "util.h"
+#include "ASCII.h"
 
 char* concat_str(const char* str1, const char* str2)
 {
@@ -152,7 +153,7 @@ void copy_directory(const char* src, const char* dest)
 int confirm()
 {
 	char response;
-	printf("Do you wanna proceed? [Y/N]: ");
+	printf(ALT_WHITE"Do you wanna proceed? "ALT_BLUE"[Y/N]: "RESET);
 	scanf(" %c", &response);
 	return (!(response == 'Y' || response == 'y'));
 }
