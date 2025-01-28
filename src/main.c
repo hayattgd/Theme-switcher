@@ -140,8 +140,25 @@ void applytheme(char* name)
 
 		if(d)printf("src= %s\ndest=%s\n", src, dest);
 
-		remove_directory(dest);
-		copy_directory(src, dest);
+		struct stat st;
+		if (stat(src, &st) == -1)
+		{
+			perror("Error stating source file/directory");
+			free(src);
+			free(dest);
+			continue;
+		}
+
+		if (S_ISDIR(st.st_mode))
+		{
+			remove_directory(dest);
+			copy_directory(src, dest);
+		}
+		else if (S_ISREG(st.st_mode))
+		{
+			remove(dest);
+			copy_file(src, dest);
+		}
 
 		free(src);
 		free(dest);
